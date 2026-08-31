@@ -1,0 +1,170 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 3000 >>
+stream
+BT
+/F1 24 Tf
+50 750 Td
+(FORMATION HERMES AGENT) Tj
+ET
+BT
+/F1 12 Tf
+50 720 Td
+(Guide complet des fonctionnalites) Tj
+ET
+BT
+/F1 14 Tf
+50 680 Td
+(Qu'est-ce que Hermes ?) Tj
+ET
+BT
+/F1 11 Tf
+50 660 Td
+(Hermes Agent est un framework d'agent autonome open-source cree par Nous Research.) Tj
+ET
+BT
+50 645 Td
+(C'est un outil qui comprend des instructions en langage naturel et execute des taches complexes.) Tj
+ET
+BT
+/F1 14 Tf
+50 600 Td
+(10 Fonctionnalites Core) Tj
+ET
+BT
+/F1 11 Tf
+50 580 Td
+(1. Memory Persistante - Retient preferences et contexte entre sessions) Tj
+ET
+BT
+50 565 Td
+(2. Skills Reutilisables - Sauvegarde les workflows reussis) Tj
+ET
+BT
+50 550 Td
+(3. Multi-Providers - Utilise Claude, GPT-4, DeepSeek, local GGUF, etc) Tj
+ET
+BT
+50 535 Td
+(4. Multi-Platform Gateway - Discord, Slack, Telegram, WhatsApp, Signal) Tj
+ET
+BT
+50 520 Td
+(5. 50+ Outils Natifs - Terminal, GitHub, Figma, Airtable, Google Workspace) Tj
+ET
+BT
+50 505 Td
+(6. Cron & Webhooks - Automatise des jobs on schedule) Tj
+ET
+BT
+50 490 Td
+(7. Profiles Isoles - Instances separees avec configs differentes) Tj
+ET
+BT
+50 475 Td
+(8. Open Source & Self-Hosted - Code public, tourne 100% local) Tj
+ET
+BT
+50 460 Td
+(9. Multi-Agent Workflows - 5+ agents en parallele) Tj
+ET
+BT
+50 445 Td
+(10. MCP Servers - 50+ integrations natives) Tj
+ET
+BT
+/F1 14 Tf
+50 400 Td
+(10 Use Cases Business) Tj
+ET
+BT
+/F1 11 Tf
+50 380 Td
+(#1 Support Client 24/7 - Cout ÷4 vs Claude Pro) Tj
+ET
+BT
+50 365 Td
+(#2 CI/CD Automation - Deployments 5x plus rapides) Tj
+ET
+BT
+50 350 Td
+(#3 Pipeline ETL - 10x moins cher que Zapier) Tj
+ET
+BT
+50 335 Td
+(#4 Research Automation - 2min au lieu de 2 heures) Tj
+ET
+BT
+50 320 Td
+(#5 Multi-Agent Delivery - 50% plus vite, 90% moins cher) Tj
+ET
+BT
+50 305 Td
+(#6 Cost Optimization - Meme qualite, ÷10 en facture API) Tj
+ET
+BT
+50 290 Td
+(#7 Content Generation at Scale - 5€ vs 100€) Tj
+ET
+BT
+50 275 Td
+(#8 Code Review Automation - 20h/sprint epargne) Tj
+ET
+BT
+50 260 Td
+(#9 Finance Reporting - 1 click au lieu de 3 jours) Tj
+ET
+BT
+50 245 Td
+(#10 Model A/B Testing - Optimise ta stack AI) Tj
+ET
+BT
+/F1 14 Tf
+50 200 Td
+(Hermes vs Claude Pro) Tj
+ET
+BT
+/F1 11 Tf
+50 180 Td
+(Claude Pro: Chat seulement, 1 provider, pas de memory, 20€/mois) Tj
+ET
+BT
+50 165 Td
+(Hermes: Chat + automation, multi-providers, memory persistante, pay-per-token) Tj
+ET
+BT
+50 150 Td
+(Hermes: Multi-platform, 50+ tools, multi-agents, open-source) Tj
+ET
+BT
+/F1 14 Tf
+50 100 Td
+(Formation complete: https://github.com/leorfidev/formation) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000222 00000 n 
+0000003320 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3399
+%%EOF
