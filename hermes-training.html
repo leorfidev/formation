@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Hermes Agent — Guide Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tabs button {
+            padding: 12px 24px;
+            border: none;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-tabs button.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-tabs button:hover {
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .feature-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .code-block.terminal {
+            border-left: 4px solid #764ba2;
+        }
+
+        .code-block.python {
+            border-left: 4px solid #3776ab;
+        }
+
+        .example-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .workflow-chart {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .workflow-chart pre {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+
+        .use-case-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .use-case-list li {
+            padding: 15px 20px;
+            background: white;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .use-case-list li strong {
+            color: #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .comparison-side {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-side h4 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .comparison-side.bad {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .comparison-side.good {
+            border-left: 4px solid #51cf66;
+        }
+
+        .comparison-side.bad h4 {
+            color: #ff6b6b;
+            border-bottom-color: #ff6b6b;
+        }
+
+        .comparison-side.good h4 {
+            color: #51cf66;
+            border-bottom-color: #51cf66;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pros-cons ul {
+            list-style: none;
+        }
+
+        .pros-cons li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pros-cons li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #51cf66;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .cons-list li:before {
+            content: "✗";
+            color: #ff6b6b;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            padding-bottom: 15px;
+            border-bottom: 3px solid white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pricing-table {
+            margin: 30px 0;
+        }
+
+        .pricing-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.free {
+            background: #51cf66;
+        }
+
+        .badge.paid {
+            background: #ff922b;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .faq-item h4 {
+            color: #667eea;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 10px;
+        }
+
+        .faq-item h4:hover {
+            color: #764ba2;
+        }
+
+        .faq-answer {
+            display: none;
+            color: #666;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Formation Hermes Agent</h1>
+            <p>Guide complet des fonctionnalités et possibilités</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #999;">Par Nous Research — Framework d'agent open-source autonome</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-btn active" data-section="intro">Introduction</button>
+            <button class="nav-btn" data-section="core">Fonctionnalités Core</button>
+            <button class="nav-btn" data-section="surfaces">Surfaces (Interfaces)</button>
+            <button class="nav-btn" data-section="advanced">Avancé</button>
+            <button class="nav-btn" data-section="usecases">Use Cases</button>
+            <button class="nav-btn" data-section="comparison">Hermes vs Claude</button>
+            <button class="nav-btn" data-section="faq">FAQ</button>
+        </div>
+
+        <!-- SECTION: INTRODUCTION -->
+        <div id="intro" class="content-section active">
+            <h2 class="section-title">🎯 Introduction à Hermes</h2>
+
+            <div style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Qu'est-ce que Hermes ?</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Hermes Agent</strong> est un framework d'agent autonome open-source créé par Nous Research. C'est un outil qui :
+                </p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>✅ Comprend des instructions en langage naturel</li>
+                    <li>✅ Exécute des tâches complexes automatiquement (code, recherche, automation)</li>
+                    <li>✅ Fonctionne avec TOUS les modèles IA (Claude, GPT-4, DeepSeek, local, etc.)</li>
+                    <li>✅ Garde la trace de ce qu'il apprend (memory persistante)</li>
+                    <li>✅ Fonctionne sur tous les canaux (Discord, Slack, Telegram, CLI, Desktop, Web)</li>
+                    <li>✅ Peut être étendu avec des outils et des skills customisés</li>
+                </ul>
+            </div>
+
+            <h3 style="color: white; margin: 30px 0 20px 0;">🔑 Différences avec Claude Pro</h3>
+
+            <div class="comparison-box">
+                <div class="comparison-side bad">
+                    <h4>❌ Claude Pro (Abonnement)</h4>
+                    <ul>
+                        <li>Chat seulement</li>
+                        <li>Dépendant d'Anthropic</li>
+                        <li>Pas de memory persistante</li>
+                        <li>Pas d'automation</li>
+                        <li>Pas d'intégration tools</li>
+                        <li>Coût fixe ($20/mois)</li>
+                    </ul>
+                </div>
+                <div class="comparison-side good">
+                    <h4>✅ Hermes Agent</h4>
+                    <ul>
+                        <li>Chat + automation + orchestration</li>
+                        <li>Marche avec n'importe quel modèle IA</li>
+                        <li>Memory persistante entre sessions</li>
+                        <li>Automation complète (cron, webhooks)</li>
+                        <li>50+ outils natifs intégrés</li>
+                        <li>Pay-per-token (plus cheap)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: CORE FEATURES -->
+        <div id="core" class="content-section">
+            <h2 class="section-title">⚙️ Fonctionnalités Core</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🧠</div>
+                    <h3>Memory Persistante</h3>
+                    <p>Hermes retient tes préférences, contexte, et lessons learned d'une session à l'autre. Zéro répétition — tu lui dis une fois, il le sait à jamais.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">💾</div>
+                    <h3>Skills (Procédures Réutilisables)</h3>
+                    <p>Sauvegarde les workflows qu'il répète souvent comme "skills". Hermes les charge automatiquement dans ses futures sessions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🔌</div>
+                    <h3>Multi-Providers</h3>
+                    <p>Utilise Claude, GPT-4, DeepSeek, xAI, Google, local GGUF, ou n'importe quel modèle. Swap mid-workflow sans perte de contexte.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">📱</div>
+                    <h3>Multi-Platform Gateway</h3>
+                    <p>Même agent sur Discord, Slack, Telegram, WhatsApp, iMessage, Signal, Teams, Email. Avec accès complet aux tools.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🛠️</div>
+                    <h3>50+ Outils Natifs</h3>
+                    <p>Terminal, file system, GitHub, Figma, Airtable, Google Workspace, Composio, et des dizaines d'autres. Extensibles.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">⏰</div>
+                    <h3>Cron & Webhooks</h3>
+                    <p>Automatise des jobs qui tournent on schedule. Reçois des événements externes et lance des agents automatiquement.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">📂</div>
+                    <h3>Profiles Isolés</h3>
+                    <p>Crée plusieurs instances d'Hermes avec configs séparées. Exemple : 1 pour le travail, 1 pour perso, 1 par client.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🔐</div>
+                    <h3>Open Source & Self-Hosted</h3>
+                    <p>Code source public. Peux tourner 100% local, en Docker, sur Hermes Cloud. Tu gardes la donnée.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🤖</div>
+                    <h3>Multi-Agent Workflows</h3>
+                    <p>Spawne 5+ agents en parallèle qui collaborent. Exemple : Designer + Backend + Frontend + DevOps + QA livrens une app ensemble.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">💬</div>
+                    <h3>MCP Servers</h3>
+                    <p>Intègre n'importe quel protocole MCP. Figma, GitHub, Airtable, Notion, Google Workspace, Composio, 50+ autres natifs.</p>
+                </div>
+            </div>
+
+            <h3 style="color: white; margin: 40px 0 20px 0;">📋 Commandes Essentielles</h3>
+
+            <div class="code-block terminal">
+$ hermes chat -q "Do something"          # Single query
+$ hermes                                  # Interactive CLI
+$ hermes --tui                           # Terminal UI (fancy)
+$ hermes desktop                         # GUI native (Electron)
+$ hermes dashboard                       # Web admin panel
+$ hermes --profile work                  # Switcher de profile
+$ hermes config set model.default gpt-4  # Changer le modèle
+$ hermes skills list                     # Lister les skills
+$ hermes tools                           # Enable/disable tools
+            </div>
+        </div>
+
+        <!-- SECTION: SURFACES -->
+        <div id="surfaces" class="content-section">
+            <h2 class="section-title">🖥️ Surfaces (Interfaces)</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">⌨️</div>
+                    <h3>CLI (Terminal)</h3>
+                    <p><strong>Quand l'utiliser :</strong> Queries rapides, automation, scripts<br><span style="color: #999;">$ hermes chat -q "..."</span></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h3>TUI (Ink Terminal UI)</h3>
+                    <p><strong>Quand l'utiliser :</strong> Chat interactif avec widgets dockés (clock, ticker, metrics)<br><span style="color: #999;">$ hermes --tui</span></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🖱️</div>
+                    <h3>Desktop App (Electron)</h3>
+                    <p><strong>Quand l'utiliser :</strong> GUI native, drag-and-drop files, notifications<br><span style="color: #999;">$ hermes desktop</span></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h3>Web Dashboard</h3>
+                    <p><strong>Quand l'utiliser :</strong> Admin panel complet, webhooks, MCP catalog<br><span style="color: #999;">$ hermes dashboard</span></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">💬</div>
+                    <h3>Discord</h3>
+                    <p><strong>Quand l'utiliser :</strong> Support client, team chat, automation<br><span style="color: #999;">Same agent, full tools access</span></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">💼</div>
+                    <h3>Slack, Telegram, WhatsApp</h3>
+                    <p><strong>Quand l'utiliser :</strong> Communication platforme native<br><span style="color: #999;">Multi-channel deployment</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: ADVANCED -->
+        <div id="advanced" class="content-section">
+            <h2 class="section-title">🚀 Avancé</h2>
+
+            <h3 style="color: white; margin: 30px 0 20px 0;">📦 Profiles Isolés</h3>
+
+            <div class="example-box">
+                <h4>Cas d'Usage : Agence Multi-Client</h4>
+                <p>Chaque client = son propre profile avec :</p>
+                <ul style="margin: 15px 0 0 20px;">
+                    <li>Config séparée (modèle, tools, voice)</li>
+                    <li>API keys séparées (GitHub token client-specific)</li>
+                    <li>Memory isolée (zéro cross-contamination data)</li>
+                    <li>Skills spécialisées</li>
+                    <li>Cron jobs propres</li>
+                </ul>
+            </div>
+
+            <div class="code-block terminal">
+# Créer et switcher
+$ hermes --profile client-acme
+$ hermes --profile client-bigcorp
+$ hermes --profile perso
+
+# Configurer individuellement
+$ hermes --profile work config set model.default gpt-4-turbo
+$ hermes --profile perso config set model.default claude-haiku
+            </div>
+
+            <h3 style="color: white; margin: 40px 0 20px 0;">🤝 Multi-Agent Workflows</h3>
+
+            <div class="example-box">
+                <h4>Cas d'Usage : Livrer une App Complète</h4>
+                <p><strong>Au lieu de :</strong> 1 agent qui code 20 jours (design → backend → frontend → ops → tests séquentiellement)</p>
+                <p><strong>Fais :</strong> 5 agents en parallèle (Designer + Backend + Frontend + DevOps + QA en 4 jours)</p>
+                <p style="margin-top: 15px; color: #51cf66;"><strong>Résultat :</strong> 5x plus vite, 10x moins cher</p>
+            </div>
+
+            <div class="code-block python">
+from hermes_tools import delegate_task
+
+# Spawner 5 agents en parallèle
+results = delegate_task(tasks=[
+    {"goal": "Designer: Create Figma designs for TODO app"},
+    {"goal": "Backend: Build FastAPI TODO API"},
+    {"goal": "Frontend: Build React TODO UI"},
+    {"goal": "DevOps: Setup CI/CD and infra"},
+    {"goal": "QA: Write test suites"}
+])
+
+# Tous tournent en parallèle, résultats à la fin
+            </div>
+
+            <h3 style="color: white; margin: 40px 0 20px 0;">⏰ Cron & Webhooks</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Exemples</th>
+                        <th>Use Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cron Jobs</strong></td>
+                        <td>Every 30min, Daily 9am, 0 9 * * *</td>
+                        <td>Healthchecks, daily briefings, data collection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Webhooks</strong></td>
+                        <td>GitHub push, Stripe payment, form submission</td>
+                        <td>Event-driven automation, CI/CD, alerts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Schedule Scripts</strong></td>
+                        <td>Monitor external sources for changes</td>
+                        <td>Price monitoring, news alerts, competitor tracking</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: white; margin: 40px 0 20px 0;">🧩 MCP Servers (50+ Intégrés)</h3>
+
+            <div class="code-block terminal">
+# Setup Figma MCP
+$ hermes mcp add figma
+
+# Setup GitHub MCP
+$ hermes mcp add github
+
+# Setup Composio (500+ APIs)
+$ hermes mcp add composio
+
+# Setup Google Workspace
+$ hermes mcp add google-workspace
+
+# Lister tous les MCPs
+$ hermes mcp list
+            </div>
+
+            <p style="color: white; margin: 20px 0;">Hermes peut intégrer :</p>
+            <ul style="color: white; margin-left: 20px; line-height: 2;">
+                <li>🎨 Figma (design collaboration)</li>
+                <li>🔗 GitHub (code repos, PRs, actions)</li>
+                <li>📊 Airtable (databases, automation)</li>
+                <li>📝 Notion (notes, databases)</li>
+                <li>📧 Google Workspace (Gmail, Sheets, Docs, Drive)</li>
+                <li>💬 Slack, Discord, Teams (messaging)</li>
+                <li>🚀 Composio (500+ APIs intégrées)</li>
+                <li>📹 YouTube (transcripts, metadata)</li>
+                <li>🔬 ArXiv (research papers)</li>
+                <li>💳 Stripe, Shopify (e-commerce)</li>
+                <li>☁️ AWS, GCP, Azure (cloud infra)</li>
+                <li>...et 40+ autres</li>
+            </ul>
+        </div>
+
+        <!-- SECTION: USE CASES -->
+        <div id="usecases" class="content-section">
+            <h2 class="section-title">💼 10 Use Cases Business Réels</h2>
+
+            <ul class="use-case-list">
+                <li>
+                    <strong>#1 Support Client 24/7 (Chatbot)</strong><br>
+                    Déploie Hermes sur Discord/Slack de ton entreprise. Il triage tickets, répond FAQs, crée GitHub issues.<br>
+                    📊 <em>Coût ÷4 vs Claude Pro par utilisateur</em>
+                </li>
+                <li>
+                    <strong>#2 CI/CD Automation</strong><br>
+                    Webhook GitHub → l'agent teste, commite fixes, ouvre PRs automatiquement.<br>
+                    📊 <em>Zéro manuel, déploiements 5x plus rapides</em>
+                </li>
+                <li>
+                    <strong>#3 Pipeline ETL Personnalisé</strong><br>
+                    Hermes lit tes données (Airtable, Notion, Sheets), les traite, stocke le résultat.<br>
+                    📊 <em>Costs 10x moins cher que Zapier + ChatGPT</em>
+                </li>
+                <li>
+                    <strong>#4 Research Automation</strong><br>
+                    Crawl sites, scrape docs, résume arXiv papers, sauvegarde en Obsidian/Notion.<br>
+                    📊 <em>Une seule commande, résultats en 2min</em>
+                </li>
+                <li>
+                    <strong>#5 Multi-Agent App Delivery</strong><br>
+                    5 agents (Designer + Backend + Frontend + DevOps + QA) livrent une app complète en parallèle.<br>
+                    📊 <em>50% plus vite, 90% moins cher</em>
+                </li>
+                <li>
+                    <strong>#6 Cost Optimization (API Usage)</strong><br>
+                    Hermes tourne sur DeepSeek/local GGUF au lieu de Claude Pro.<br>
+                    📊 <em>Même qualité, ÷10 en facture API</em>
+                </li>
+                <li>
+                    <strong>#7 Content Generation at Scale</strong><br>
+                    Génère 100 posts LinkedIn, articles, images, vidéos en parallèle.<br>
+                    📊 <em>Coûte 5€ vs 100€ en Claude + Suno + tools</em>
+                </li>
+                <li>
+                    <strong>#8 Automated Code Review</strong><br>
+                    Hermes review chaque PR (linter, sécurité, perf), laisse des comments.<br>
+                    📊 <em>20h/sprint du dev épargné</em>
+                </li>
+                <li>
+                    <strong>#9 Finance Reporting Automation</strong><br>
+                    Extrait Excel/CSV, génère rapports Tableau/PDF, envoie emails automatiquement.<br>
+                    📊 <em>1 click au lieu de 3 jours de travail manuel</em>
+                </li>
+                <li>
+                    <strong>#10 Model A/B Testing</strong><br>
+                    Lance la même tâche sur GPT-4, Claude, DeepSeek en parallèle, compare coûts/qualité.<br>
+                    📊 <em>Optimise ta stack AI en temps réel</em>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SECTION: COMPARISON -->
+        <div id="comparison" class="content-section">
+            <h2 class="section-title">⚖️ Hermes vs Claude Pro vs OpenAI</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Claude Pro ($20/mois)</th>
+                        <th>ChatGPT Plus ($20/mois)</th>
+                        <th>Hermes (Open Source)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Chat Interface</strong></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅ (CLI + Web + Desktop + Mobile)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multi-Providers</strong></td>
+                        <td>❌ (Anthropic only)</td>
+                        <td>❌ (OpenAI only)</td>
+                        <td>✅ (Claude, GPT, DeepSeek, local, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Memory Persistante</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ (Cross-session)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multi-Platform</strong></td>
+                        <td>❌ (Web only)</td>
+                        <td>❌ (Web only)</td>
+                        <td>✅ (Discord, Slack, Telegram, CLI, Desktop, Web)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Automation (Cron/Webhooks)</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ (Full cron + webhooks)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>50+ Tools Natifs</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ (Terminal, Git, Figma, Airtable, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multi-Agent Workflows</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ (5+ agents en parallèle)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Skills Réutilisables</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ (Persist across sessions)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Self-Hosted/Open Source</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ (100% open source)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coûts Mensuels</strong></td>
+                        <td>$20 (abonnement)</td>
+                        <td>$20 (abonnement)</td>
+                        <td>$5-30 (pay-per-token, no subscription)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: white; margin: 40px 0 20px 0;">🎯 Quand Utiliser Quoi?</h3>
+
+            <div class="comparison-box">
+                <div class="comparison-side bad">
+                    <h4>Utilise Claude Pro si...</h4>
+                    <ul>
+                        <li>Tu fais juste du chat casual</li>
+                        <li>Tu n'as pas besoin d'automation</li>
+                        <li>Tu veux support humain Anthropic</li>
+                    </ul>
+                </div>
+                <div class="comparison-side good">
+                    <h4>Utilise Hermes si...</h4>
+                    <ul>
+                        <li>Tu veux automation (cron, webhooks)</li>
+                        <li>Tu as besoin de multi-providers</li>
+                        <li>Tu as un team (Discord/Slack bot)</li>
+                        <li>Tu veux cost optimization</li>
+                        <li>Tu veux multi-agent workflows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: FAQ -->
+        <div id="faq" class="content-section">
+            <h2 class="section-title">❓ FAQ</h2>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Est-ce que Hermes remplace Claude Pro ?</h4>
+                <div class="faq-answer">
+                    <p>Partiellement. Si tu fais juste du chat, Claude Pro est simple et supporté. Mais si tu veux automation, multi-agents, cost optimization, ou multi-platform, Hermes est 10x mieux. Hermes peut d'ailleurs utiliser Claude comme modèle backend — c'est juste plus flexible.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Est-ce difficile à installer ?</h4>
+                <div class="faq-answer">
+                    <p>Non ! Un seul script d'installation : <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>. Ça setup tout (Python venv, tools, launcher). Après, c'est juste <code>hermes</code> pour lancer.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Faut-il une API key pour chaque provider ?</h4>
+                <div class="faq-answer">
+                    <p>Oui, mais c'est optionnel. Si tu veux utiliser Claude, ajoute ta clé Anthropic. Si tu veux GPT-4, ajoute OpenAI. Si tu veux local GGUF, zéro clé. Hermes peut tourner 100% gratuit avec des modèles open-source.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Comment créer une skill ?</h4>
+                <div class="faq-answer">
+                    <p>Sauvegarde un workflow réussi : <code>hermes skill create mon-workflow "Description"</code>. Hermes l'ajoute automatiquement à ses futures sessions. C'est comme une fonction réutilisable.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Peux-tu avoir plusieurs Hermes qui tournent simultanément ?</h4>
+                <div class="faq-answer">
+                    <p>Oui ! Utilise des profiles : <code>hermes --profile work &</code> et <code>hermes --profile perso &</code>. Chacun tourne comme un process indépendant avec sa config, memory, et tools séparés.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Quel est le coût réel ?</h4>
+                <div class="faq-answer">
+                    <p>Hermes est gratuit (open-source). Tu paies seulement l'API backend que tu utilises : Claude = $0.80/1M tokens input, GPT-4 = $0.03/1K tokens, DeepSeek = 0.14¢/1M tokens. Zéro abonnement obligatoire.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Est-ce que mes données sont sécurisées ?</h4>
+                <div class="faq-answer">
+                    <p>Oui. Hermes tourne 100% local ou en Docker. Tes données ne vont jamais aux serveurs Nous Research. Tu contrôles tout (configs, memory, skills, logs). Si tu veux cloud, tu utilises Hermes Cloud (self-managed).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Puis-je intégrer mes outils spécifiques ?</h4>
+                <div class="faq-answer">
+                    <p>Oui ! 3 façons : (1) MCP servers pour les protocoles standards, (2) Custom tools via Python, (3) Webhooks pour les événements externes. Hermes peut parler à n'importe quel API.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h4 onclick="this.nextElementSibling.classList.toggle('show')">Comment démarrer rapidement ?</h4>
+                <div class="faq-answer">
+                    <p>1) Installe : <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code><br>
+                    2) Setup : <code>hermes setup</code><br>
+                    3) Chat : <code>hermes</code><br>
+                    4) Lire docs : https://hermes-agent.nousresearch.com/docs</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h3>🎓 Tu as fini la formation !</h3>
+            <p>Tu as maintenant une compréhension complète d'Hermes Agent et de tous ses cas d'usage.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                <strong>Prochaines étapes :</strong> Installe Hermes, explore les skills, crée un profile perso, et commence à l'utiliser !
+            </p>
+            <p style="margin-top: 20px; font-size: 0.85em; opacity: 0.8;">
+                Documentation : <a href="https://hermes-agent.nousresearch.com/docs" style="color: white; text-decoration: underline;">hermes-agent.nousresearch.com/docs</a><br>
+                GitHub : <a href="https://github.com/NousResearch/hermes-agent" style="color: white; text-decoration: underline;">github.com/NousResearch/hermes-agent</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active from all buttons
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+
+                // Add active to clicked button
+                this.classList.add('active');
+                document.getElementById(this.dataset.section).classList.add('active');
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item h4').forEach(h4 => {
+            h4.addEventListener('click', function() {
+                this.nextElementSibling.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
